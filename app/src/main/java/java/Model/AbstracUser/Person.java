@@ -1,4 +1,4 @@
-package Model;
+package java.Model.AbstracUser;
 
 public class Person {
     public String UserFirstname  , UserLastName , Email , Password ;

@@ -1,6 +1,8 @@
-package Model;
+package java.Model.Member;
 
-public class Member extends Person{
+import java.Model.AbstracUser.Person;
+
+public class Member extends Person {
 
     public double Age , Weight , height , Rate ;
     public char BloodType ;
