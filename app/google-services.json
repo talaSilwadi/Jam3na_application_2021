@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "708083245650",
+    "firebase_url": "https://jam3na-application-default-rtdb.firebaseio.com",
+    "project_id": "jam3na-application",
+    "storage_bucket": "jam3na-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708083245650:android:cfa78692b9fdff741ab58b",
+        "android_client_info": {
+          "package_name": "com.example.createtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708083245650-qd4kmr0ot1o4l12ccg2cb2vt7649debu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHjrLKHiyLoBnnZvVKHQ5MNp6DTlOIAcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708083245650-qd4kmr0ot1o4l12ccg2cb2vt7649debu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708083245650:android:7a2ba23425a405631ab58b",
+        "android_client_info": {
+          "package_name": "com.example.jam3na"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708083245650-qd4kmr0ot1o4l12ccg2cb2vt7649debu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHjrLKHiyLoBnnZvVKHQ5MNp6DTlOIAcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708083245650-qd4kmr0ot1o4l12ccg2cb2vt7649debu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708083245650:android:7384c600f17ae1231ab58b",
+        "android_client_info": {
+          "package_name": "com.example.jam3na_testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708083245650-qd4kmr0ot1o4l12ccg2cb2vt7649debu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHjrLKHiyLoBnnZvVKHQ5MNp6DTlOIAcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708083245650-qd4kmr0ot1o4l12ccg2cb2vt7649debu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
