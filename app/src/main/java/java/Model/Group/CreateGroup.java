@@ -1,4 +1,4 @@
 package java.Model.Group;
 
-public class Group {
+public class CreateGroup {
 }
