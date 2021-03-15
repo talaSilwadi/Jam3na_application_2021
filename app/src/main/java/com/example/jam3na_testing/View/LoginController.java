@@ -69,7 +69,7 @@ public class LoginController extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginController.this, "LogIn successfully.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), profileController.class));
 
                         }else{
                             Toast.makeText(LoginController.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.RegisterController" />
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.profileController">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
