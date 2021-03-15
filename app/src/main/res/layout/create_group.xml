@@ -78,6 +78,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupDescText" /><![CDATA[
+
+    android:drawSelectorOnTop="true"
+        android:prompt="@string/spin"
+        android:entries="@array/SportCategory"
+    />
+
+
+    ]]>
+
+    <Spinner
+        android:id="@+id/groupCategory"
+        android:layout_width="242dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupNameText" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Group Category"
+        app:layout_constraintEnd_toStartOf="@+id/groupCategory"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
