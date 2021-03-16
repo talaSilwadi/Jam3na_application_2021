@@ -41,6 +41,7 @@ public class RegisterController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_controller);
+
         FirstName   = findViewById(R.id.inputFirstUsername);
         LastName   = findViewById(R.id.inputLastUsername);
         mEmail      = findViewById(R.id.inputEmail);
@@ -114,7 +115,7 @@ public class RegisterController extends AppCompatActivity {
                         Log.d(TAG, "onSuccess: user Profile is created for " + VisitorID);
                         }
                         });
-                        startActivity(new Intent(getApplicationContext(), profileController.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                     else{
                         Toast.makeText(RegisterController.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -128,7 +129,7 @@ public class RegisterController extends AppCompatActivity {
         LoginUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), LoginController.class));
+                startActivity(new Intent(getApplicationContext(),LoginController.class));
 
             }
         });
