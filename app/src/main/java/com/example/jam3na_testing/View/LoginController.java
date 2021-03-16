@@ -1,8 +1,5 @@
 package com.example.jam3na_testing.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jam3na_testing.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,7 +69,7 @@ public class LoginController extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginController.this, "LogIn successfully.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), profileController.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         }else{
                             Toast.makeText(LoginController.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -79,15 +79,12 @@ public class LoginController extends AppCompatActivity {
                 });
             }
         });
-
         CreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),RegisterController.class));
-
             }
         });
-
 
 
     }
