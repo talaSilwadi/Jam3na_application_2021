@@ -11,13 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jam3na_testing.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -38,14 +41,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this , " settings not ready yet !",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.LogOut:
+                fAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginController.class));
                 return true;
             case R.id.CreateGroup:
                 startActivity(new Intent(getApplicationContext(),CreateGroupController.class));
-                return true;  
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
-    }
+
+}
+
 }
