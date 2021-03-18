@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">Jam3na_Testing</string>
+    <string name="app_name">Jam3na Application</string>
     <string name="jam3na_register">Jam3na Register</string>
     <string name="jam3na_login">Jam3na Login</string>
+    <string name="Done">Done</string>
+    <string name="cancel">Delete</string>
+    <string name="CheckUp">Check Your Email</string>
+    <string name="twitterUsername">twitter</string>
 </resources>

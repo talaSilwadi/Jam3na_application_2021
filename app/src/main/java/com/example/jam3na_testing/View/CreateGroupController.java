@@ -1,34 +1,26 @@
 package com.example.jam3na_testing.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.jam3na_testing.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.Console;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.sql.DriverManager.println;
 
 public class CreateGroupController extends AppCompatActivity {
 
@@ -94,5 +86,26 @@ public class CreateGroupController extends AppCompatActivity {
                 });
 
     }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.profile:
+                startActivity(new Intent(getApplicationContext(), profileController.class));
+                return true;
+            case R.id.Settings:
+                Toast.makeText(this , " settings not ready yet !",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.LogOut:
+                fAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), LoginController.class));
+                return true;
+            case R.id.CreateGroup:
+                startActivity(new Intent(getApplicationContext(),CreateGroupController.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
 
+        }
+
+    }
 }

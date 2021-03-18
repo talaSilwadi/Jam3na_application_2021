@@ -33,10 +33,10 @@ public class LoginController extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private static final String TAG = null;
     EditText UserEmail,Password;
-    Button LogInBtn , googleBtn , facebookBtn;
+    Button LogInBtn , googleBtn , facebookBtn ,forgetPass;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
-    TextView CreateUser ;
+    TextView CreateUser;
     private GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -55,7 +55,8 @@ public class LoginController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_controller);
-        
+
+        //create request to google
         createRequest();
 
         UserEmail      = findViewById(R.id.inputEmail);
@@ -66,6 +67,7 @@ public class LoginController extends AppCompatActivity {
         CreateUser=findViewById(R.id.textViewSignUp);
         googleBtn=findViewById(R.id.btnGoogle);
         facebookBtn=findViewById(R.id.btnFacebook);
+        forgetPass=findViewById(R.id.forgotPassword);
 
         LogInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,14 +86,13 @@ public class LoginController extends AppCompatActivity {
                 }
 
                 if (password.length() < 6) {
-                    Password.setError("Password Must be >= 6 Characters");
+                    Password.setError("Password Must be more than  6 Characters");
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
 
                 // authentication the user
-
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -114,12 +115,22 @@ public class LoginController extends AppCompatActivity {
             }
         });
 
+        forgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),forgetpasswordActivity.class));
+            }
+        });
+
+
         googleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
             }
         });
+
+
 
     }
 
@@ -167,9 +178,8 @@ public class LoginController extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = fAuth.getCurrentUser();
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
-                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

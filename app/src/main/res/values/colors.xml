@@ -8,8 +8,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimaryDark">#3262C4</color>
-    <color name="colorPrimary">#3262C4</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorRed">#C11515</color>
+    <color name="colorPrimary">#49BEFF</color>
+    <color name="colorAccent">#0D5D98</color>
+
+    <color name="address">#2F7092</color>
+    <color name="followers">#0D5D98</color>
+    <color name="headings">#3797CF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="gradEnd">#0D5D98</color>
+    <color name="gradStart">#63C9FF</color>
+    <color name="followersBg">#3797CF</color>
+    <color name="followingBg">#3797CF</color>
+    <color name="grey">#2F7092</color>
+
 </resources>

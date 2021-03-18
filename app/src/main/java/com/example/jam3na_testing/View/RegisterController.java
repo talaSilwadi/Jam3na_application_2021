@@ -36,7 +36,6 @@ public class RegisterController extends AppCompatActivity {
     TextView LoginUser ;
     String VisitorID ;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +91,7 @@ public class RegisterController extends AppCompatActivity {
                 return;
             }
             if (password.length() < 6) {
-                mPassword.setError("Password Must be >= 6 Characters");
+                mPassword.setError("Password Must be more than 6 Characters");
                 return;
             }
 
