@@ -6,4 +6,9 @@
     <string name="cancel">Delete</string>
     <string name="CheckUp">Check Your Email</string>
     <string name="twitterUsername">twitter</string>
+    <array name="spinnerItems">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </array>
 </resources>

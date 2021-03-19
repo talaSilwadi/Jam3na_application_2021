@@ -1,12 +1,16 @@
 package com.example.jam3na_testing.View;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,8 +20,12 @@ import com.example.jam3na_testing.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,47 +35,60 @@ public class CreateGroupController extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     ProgressBar progressBar;
-    Button InsBtn,createBtn ;
-    EditText GroupName,GroupDesc;
-
+    Button InsBtn, createBtn;
+    EditText GroupName, GroupDesc;
+    Spinner GroupCate;
+    TextView admin_Id;
+    int SELECT_PICTURE = 200;
+    ImageView GroupPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_group);
         fAuth = FirebaseAuth.getInstance();
+
         progressBar = findViewById(R.id.progressBar2);
-        InsBtn=findViewById(R.id.ins_pic);
-        createBtn=findViewById(R.id.createBtn);
-        GroupDesc=findViewById(R.id.groupDescText);
-        GroupName=findViewById(R.id.groupNameText);
+        InsBtn = findViewById(R.id.ins_pic);
+        createBtn = findViewById(R.id.createBtn);
+        GroupDesc = findViewById(R.id.groupDescText);
+        GroupName = findViewById(R.id.groupNameText);
+        admin_Id = findViewById(R.id.adminId);
+        GroupCate = findViewById(R.id.groupCategroy);
+        GroupPic=findViewById(R.id.imageView);
+      //  admin_Id.setText("mohammad");
 
 
-
-
-        createBtn.setOnClickListener(e->{
+        createBtn.setOnClickListener(e -> {
             create_group_method();
         });
-
-
+        InsBtn.setOnClickListener(e->{
+            imageChooser();
+        });
 
 
     }
 
     private void create_group_method() {
-         String TAG = null;
-    String Group_desc=GroupDesc.getText().toString();
-    String Group_name=GroupName.getText().toString();
+        String TAG = null;
+        String Group_desc = GroupDesc.getText().toString();
+        String Group_name = GroupName.getText().toString();
+        String Group_adminid = admin_Id.getText().toString();
+        String GroupCategory = GroupCate.getSelectedItem().toString();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
+        Map<String, Object> group = new HashMap<>();
+        group.put("Group Name", Group_name);
+        group.put("Group Desciption", Group_desc);
+        group.put("Admin ID","mohammad");
+        group.put("Group Category", GroupCategory);
+
+
 
 // Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
+        db.collection("Groups")
+                .add(group)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
 
 
                     @Override
@@ -76,6 +97,7 @@ public class CreateGroupController extends AppCompatActivity {
                         Toast.makeText(CreateGroupController.this, "added successfully.", Toast.LENGTH_SHORT).show();
                     }
                 })
+
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -85,22 +107,55 @@ public class CreateGroupController extends AppCompatActivity {
                     }
                 });
 
+
+    }
+    void imageChooser() {
+
+        // create an instance of the
+        // intent of the type image
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        // pass the constant to compare it
+        // with the returned requestCode
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+    }
+
+    // this function is triggered when user
+    // selects the image from the imageChooser
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            // compare the resultCode with the
+            // SELECT_PICTURE constant
+            if (requestCode == SELECT_PICTURE) {
+                // Get the url of the image from data
+                Uri selectedImageUri = data.getData();
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    GroupPic.setImageURI(selectedImageUri);
+                }
+            }
+        }
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.profile:
                 startActivity(new Intent(getApplicationContext(), profileController.class));
                 return true;
             case R.id.Settings:
-                Toast.makeText(this , " settings not ready yet !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, " settings not ready yet !", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.LogOut:
                 fAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginController.class));
                 return true;
             case R.id.CreateGroup:
-                startActivity(new Intent(getApplicationContext(),CreateGroupController.class));
+                startActivity(new Intent(getApplicationContext(), CreateGroupController.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -108,4 +163,6 @@ public class CreateGroupController extends AppCompatActivity {
         }
 
     }
+
+
 }
