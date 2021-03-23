@@ -6,4 +6,26 @@
     <string name="cancel">Delete</string>
     <string name="CheckUp">Check Your Email</string>
     <string name="twitterUsername">twitter</string>
+    <array name="spinnerItems">
+        <item>Canoeing</item>
+        <item>Skiing</item>
+        <item>Swimming</item>
+        <item>Aerobics</item>
+        <item>Boxing</item>
+        <item>Running</item>
+        <item>Cycling</item>
+        <item>Equestrianism</item>
+        <item>Martial Arts</item>
+        <item>Long Jump</item>
+        <item>Powerlifting</item>
+        <item>Baseball</item>
+        <item>Basketball</item>
+        <item>Tennis</item>
+        <item>Bowling</item>
+        <item>Football</item>
+        <item>Handball</item>
+        <item>Table Tennis</item>
+        <item>Volleyball</item>
+        <item>Skateboarding</item>
+    </array>
 </resources>

@@ -36,7 +36,7 @@
 
         <EditText
             android:id="@+id/profileFirstUsername"
-            android:layout_width="wrap_content"
+            android:layout_width="205dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgUser"
             android:layout_centerHorizontal="true"
@@ -44,20 +44,21 @@
             android:fontFamily="sans-serif-light"
             android:hint="User Name"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
 
         <EditText
             android:id="@+id/profileLastUsername"
-            android:layout_width="wrap_content"
+            android:layout_width="195dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileFirstUsername"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
             android:fontFamily="sans-serif"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
