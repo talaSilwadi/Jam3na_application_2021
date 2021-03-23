@@ -7,6 +7,9 @@ public class Member extends Person {
     public double Age , Weight , height , Rate ;
     public char BloodType ;
 
+    public Member(){
+
+    }
     public Member(double age, double weight, double height, double rate, char bloodType) {
         super();
         Age = age;

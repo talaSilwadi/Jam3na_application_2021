@@ -21,13 +21,17 @@ import com.example.jam3na_testing.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
+
+import java.Model.Member.Member;
+
 public class profileController extends AppCompatActivity {
     public static final String TAG = "TAG";
     RadioGroup radioGroup ;
@@ -35,11 +39,14 @@ public class profileController extends AppCompatActivity {
     EditText profileFirstName,profileEmail,profilePhone,profileLastName , UserAge , UserHeight , UserWeight;
     ImageView profileImageView;
     Button saveBtn;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth ;
+    DatabaseReference reff;
     FirebaseFirestore fStore;
-    FirebaseUser user;
     String visitorID ;
     StorageReference storageReference;
+    Member member ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +58,7 @@ public class profileController extends AppCompatActivity {
         profilePhone = findViewById(R.id.profilePhoneNumber);
         profileImageView = findViewById(R.id.profileImageView);
         saveBtn = findViewById(R.id.saveProfileInfo);
-        radioGroup=findViewById(R.id.gender);
+       // radioGroup=findViewById(R.id.gender);
         UserAge = findViewById(R.id.UserAge);
         UserHeight= findViewById(R.id.UserHeight);
         UserWeight = findViewById(R.id.UserWeight);
@@ -60,6 +67,13 @@ public class profileController extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         visitorID = fAuth.getCurrentUser().getUid();
+
+
+        /**
+         * Connection member Model to firebase datastore
+         * */
+        member = new Member();
+        reff = FirebaseDatabase.getInstance().getReference().child("member");
 
 
         DocumentReference documentReference = fStore.collection("Visitor").document(visitorID);
@@ -72,10 +86,17 @@ public class profileController extends AppCompatActivity {
                 profileEmail.setText(value.getString("Uemail"));
                 profilePhone.setText(value.getString("Uphone"));
 
-                //to store this data after user edit it
+            }
+        });
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(profileController.this, "Hello", Toast.LENGTH_SHORT).show();
 
             }
         });
+
 
         //authentication for google login
 
@@ -95,6 +116,8 @@ public class profileController extends AppCompatActivity {
                 /**
                  * Save all User Information Edit or added to the Firebase "Visitor"
                  * */
+
+
 
 
 
