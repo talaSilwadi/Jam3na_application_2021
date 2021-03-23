@@ -1,10 +1,12 @@
 package com.example.jam3na_testing.View;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,7 +28,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.Model.Group.CreateGroup;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,13 +45,15 @@ public class CreateGroupController extends AppCompatActivity {
     TextView admin_Id;
     int SELECT_PICTURE = 200;
     ImageView GroupPic;
+    StorageReference mStorgeRef;
+    Uri selectedImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_group);
         fAuth = FirebaseAuth.getInstance();
-
+        mStorgeRef=FirebaseStorage.getInstance().getReference("Images");
         progressBar = findViewById(R.id.progressBar2);
         InsBtn = findViewById(R.id.ins_pic);
         createBtn = findViewById(R.id.createBtn);
@@ -61,6 +67,7 @@ public class CreateGroupController extends AppCompatActivity {
 
         createBtn.setOnClickListener(e -> {
             create_group_method();
+            upload_group_image();
         });
         InsBtn.setOnClickListener(e->{
             imageChooser();
@@ -68,6 +75,30 @@ public class CreateGroupController extends AppCompatActivity {
 
 
     }
+    private String getExtension(Uri uri) {
+        ContentResolver cr=getContentResolver();
+        MimeTypeMap mimetypemap=MimeTypeMap.getSingleton();
+        return mimetypemap.getExtensionFromMimeType(cr.getType(uri));
+
+    }
+
+    private void upload_group_image() {
+        StorageReference Ref = mStorgeRef.child(System.currentTimeMillis() + "." + getExtension(selectedImageUri));
+        Ref.putFile(selectedImageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(CreateGroupController.this, "Image Uploaded successfully.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CreateGroupController.this, "Image Uploaded failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 
     private void create_group_method() {
         String TAG = null;
@@ -133,7 +164,7 @@ public class CreateGroupController extends AppCompatActivity {
             // SELECT_PICTURE constant
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
-                Uri selectedImageUri = data.getData();
+                 selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     GroupPic.setImageURI(selectedImageUri);

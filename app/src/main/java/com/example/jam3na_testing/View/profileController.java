@@ -84,6 +84,7 @@ public class profileController extends AppCompatActivity {
             profileFirstName.setText(SignInAccount.getDisplayName());
             profileEmail.setText(SignInAccount.getEmail());
             profileLastName.setText(SignInAccount.getFamilyName());
+
         }
 
 
