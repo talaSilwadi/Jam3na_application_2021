@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.profileController">
+    tools:context=".View.ModifyProfileActivity">
 
     <RelativeLayout
         android:id="@+id/rellay1"
@@ -46,14 +46,13 @@
 
             >
 
-            <TextView
+            <EditText
                 android:id="@+id/profileFirstUsername"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imgUser"
                 android:layout_marginTop="10dp"
                 android:hint="FirstName"
-                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -61,14 +60,13 @@
                 />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/profileLastUsername"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imgUser"
                 android:layout_marginTop="10dp"
                 android:hint="LastName"
-                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -88,13 +86,13 @@
             <TextView
 
                 android:drawableLeft="@drawable/ic_baseline_mark_email_read_24"
-                android:id="@+id/profileEmail"
+                android:id="@+id/EmailProfile"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/black"
-                android:textSize="12dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:hint="    Email"
                 android:layout_marginBottom="15dp"
@@ -104,11 +102,12 @@
 
     </RelativeLayout>
 
+
     <LinearLayout
         android:id="@+id/linlay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rellay1"
+        android:layout_below="@id/linlay2"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -125,69 +124,85 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="Height"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="15dp"
 
-                <TextView
+                    />
+
+                <EditText
                     android:id="@+id/UserHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Your Height"
                     android:textAllCaps="true"
                     android:textColor="@color/colorBlack"
-                    android:textSize="13dp" />
+                    android:textSize="10dp"
+                    android:layout_marginLeft="15dp"
+                    />
 
             </LinearLayout>
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/followers"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Weight"
-                    android:textColor="@color/white"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/UserWeight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:hint="Your Weight"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="13dp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
 
     </LinearLayout>
+<LinearLayout
+    android:id="@+id/linlay2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/rellay1"
+    android:orientation="horizontal"
+    >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@color/followers"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Weight"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginRight="17dp"
+                />
+
+            <EditText
+                android:id="@+id/UserWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:hint="Your Weight"
+                android:textAllCaps="true"
+                android:textSize="10dp"
+                android:layout_marginLeft="17dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -195,12 +210,11 @@
         android:layout_below="@+id/linlay1">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="362dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:layout_width="381dp"
+            android:layout_height="334dp"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
@@ -214,20 +228,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_baseline_phone_android_24"
                     android:text="  Phone Number"
+                    android:drawableLeft="@drawable/ic_baseline_phone_android_24"
                     android:textColor="@color/black"
                     android:textSize="15dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/profilePhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:inputType="phone"
                     android:fontFamily="sans-serif-light"
-                    android:gravity="center"
                     android:hint="User Phone"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -240,27 +254,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="3dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_age"
                     android:text="  Age"
+                    android:drawableLeft="@drawable/ic_age"
                     android:textColor="@color/black"
                     android:textSize="13dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/UserAge"
+                    android:inputType="text|number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:hint="User Age"
                     android:textColor="#000000"
-                    android:textSize="18dp"
-                    android:gravity="center"
-                    />
+                    android:textSize="15dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -269,7 +282,6 @@
                     android:background="@color/grey" />
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -279,11 +291,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_age"
                     android:text="  Gender "
+                    android:drawableLeft="@drawable/ic_age"
                     android:textColor="@color/black"
-                    android:textSize="13dp" />
-
+                    android:textSize="13dp"
+                    />
                 <RadioGroup
                     android:id="@+id/gender"
                     android:layout_width="330dp"
@@ -292,11 +304,13 @@
 
                     <RadioButton
                         android:id="@+id/Female"
+                        android:layout_marginRight="80dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="80dp"
+                        android:text="Female"
+                        android:onClick="checkBoxGender"
                         android:checked="true"
-                        android:text="Female" />
+                        />
 
                     <RadioButton
                         android:id="@+id/male"
@@ -306,7 +320,6 @@
                         android:text="Male" />
 
                 </RadioGroup>
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -314,37 +327,56 @@
                     android:background="@color/grey" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   Blood Type"
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/blood"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/BloodType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="textCapCharacters"
+                    android:hint="Your Blood Type"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
                 <Button
-                    android:id="@+id/EditProfile"
-                    android:layout_width="106dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="140dp"
-                    android:backgroundTint="@color/followersBg"
-                    android:text="Edit"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
-
-                <Button
-                    android:id="@+id/Back"
+                    android:id="@+id/SaveData"
                     android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="140dp"
-                    android:backgroundTint="@color/followersBg"
-                    android:text="Back "
+                    android:backgroundTint="@color/followers"
+                    android:text="Save "
                     android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+
+                    />
 
 
             </LinearLayout>
@@ -354,3 +386,24 @@
     </RelativeLayout>
 
 </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

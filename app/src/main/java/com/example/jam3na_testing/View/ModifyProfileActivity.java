@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,8 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jam3na_testing.R;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -29,17 +28,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
-/**
- * this activity Just to display the data that user added from sign up
- * can edit the data from edit button
- */
-public class profileController extends AppCompatActivity {
+public class ModifyProfileActivity extends AppCompatActivity {
+
     public static final String TAG = "TAG";
     RadioGroup radioGroup ;
     RadioButton gender;
-   TextView profileFirstName,profileEmail,profilePhone,profileLastName , UserAge , UserHeight , UserWeight;
+    EditText profileFirstName,profilePhone,profileLastName , UserAge , UserHeight , UserWeight;
     ImageView profileImageView;
-    Button backBtn , editBtn;
+    TextView profileEmail ;
+    Button saveBtn;
     FirebaseAuth fAuth ;
     DatabaseReference reff;
     FirebaseFirestore fStore;
@@ -50,15 +47,14 @@ public class profileController extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_activity);
+        setContentView(R.layout.activity_modify_profile);
 
         profileFirstName = findViewById(R.id.profileFirstUsername);
         profileLastName = findViewById(R.id.profileLastUsername);
-        profileEmail = findViewById(R.id.profileEmail);
+        profileEmail = findViewById(R.id.EmailProfile);
         profilePhone = findViewById(R.id.profilePhoneNumber);
         profileImageView = findViewById(R.id.profileImageView);
-        editBtn=findViewById(R.id.EditProfile);
-        backBtn = findViewById(R.id.Back);
+        saveBtn = findViewById(R.id.SaveData);
         radioGroup=findViewById(R.id.gender);
         UserAge = findViewById(R.id.UserAge);
         UserHeight= findViewById(R.id.UserHeight);
@@ -91,43 +87,6 @@ public class profileController extends AppCompatActivity {
         });
 
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ModifyProfileActivity.class));
-
-            }
-        });
-      /**  DocumentReference documentReferenceEdit = fStore.collection("member").document(visitorID);
-        documentReferenceEdit.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                UserAge.setText(value.getString("Uage"));
-                UserHeight.setText(value.getString("Uheight"));
-                UserWeight.setText(value.getString("Uweight"));
-
-            }
-        });
-*/
-
-
-
-        //authentication for google login
-        GoogleSignInAccount SignInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        if(SignInAccount != null){
-            profileFirstName.setText(SignInAccount.getDisplayName());
-            profileEmail.setText(SignInAccount.getEmail());
-            profileLastName.setText(SignInAccount.getFamilyName());
-
-        }
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,4 +118,15 @@ public class profileController extends AppCompatActivity {
 
     }
 
+
+
+
+    public void checkBoxGender(View view) {
+
+        int redioId = radioGroup.getCheckedRadioButtonId() ;
+        gender = findViewById(redioId);
+
+        Toast.makeText(this, "Select Gender : ", Toast.LENGTH_SHORT).show();
+
+    }
 }
